@@ -19,5 +19,20 @@ pipeline {
         bat 'echo "after 2"'
       }
     }
+    stage('deploy test env'){
+      steps{
+        bat 'echo "deploy test env"'
+      }
+    }
+    stage('Sanity check') {
+            steps {
+                input "Does the test environment look ok?"
+            }
+      }
+    stage('Deploy - Production') {
+            steps {
+                bat 'echo "deploy Production env"'
+            }
+      }
   }
 }
